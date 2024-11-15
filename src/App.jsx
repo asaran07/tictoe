@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -18,30 +17,35 @@ function App() {
   };
 
   return (
-    <>
-      <h1>Tic Tac Toe</h1>
+    <div className="mmx-auto p-8 text-center">
+      <h1 className="text-5xl font-bold mb-6">Tic Tac Toe</h1>
       
-      <div className="status">
+      <div className="mb-4 text-xl">
         Current turn: {playerName} ({playerSymbol})
       </div>
       
-      <div className="scores">
-        Player 1 (X): {scores.X} wins
-        Player 2 (O): {scores.O} wins
+      <div className="mb-8 space-y-1">
+        <div>Player 1 (X): {scores.X} wins</div>
+        <div>Player 2 (O): {scores.O} wins</div>
       </div>
 
-      <div className="board">
+      <div className="grid grid-cols-3 gap-2 max-w-[300px] mx-auto">
         {board.map((square, index) => (
           <button 
             key={index} 
-            className="square" 
+            className="aspect-square rounded-lg bg-white dark:bg-gray-800 
+                     border-2 border-gray-700 
+                     text-2xl font-bold 
+                     hover:bg-gray-100 dark:hover:bg-gray-700
+                     transition-colors duration-200
+                     p-0"
             onClick={() => handleClick(index)}
           >
             {square}
           </button>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
